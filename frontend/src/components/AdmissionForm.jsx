@@ -7,13 +7,13 @@ const AdmissionForm = () => {
     age: "",
     email: "",
     batch: "",
-    month: "",
+    month: "2022-12",
     amount: 500,
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(values);
+    console.log("values", values);
     // api call
     setValues({
       firstName: "",
@@ -21,7 +21,7 @@ const AdmissionForm = () => {
       age: "",
       email: "",
       batch: "",
-      month: "",
+      month: "2022-12",
       amount: 500,
     });
   };
@@ -37,7 +37,7 @@ const AdmissionForm = () => {
           <div className="w-full max-w-md space-y-8">
             <div>
               <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
-                Register
+                Admission Form
               </h2>
               <p className="mt-2 mb-10 text-center text-sm text-gray-600">
                 Daily Yoga Classes | Multiple Batches | Affordable Monthly Fees
@@ -169,13 +169,18 @@ const AdmissionForm = () => {
                   </div>
                 </div>
                 <div className="mt-12">
+                  {/* <p className="text-sm text-gray-500 m-2">Month:</p> */}
                   <label className="sr-only"></label>
                   <input
                     id="month"
-                    name="this month"
+                    name="month"
                     type="month"
+                    defaultValue={values.month}
                     required
                     className="block w-full appearance-none rounded-none border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                    onChange={(e) =>
+                      setValues({ ...values, month: e.target.value })
+                    }
                   />
                 </div>
 
