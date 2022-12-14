@@ -22,6 +22,10 @@ app.use(cors(options));
 app.use(express.json());
 
 // register route
+app.get("/", (req, res) => {
+  return res.status(200).send("Enigma Yoga Studio");
+});
+
 app.post("/register", registerInitialChecks, register);
 
 // initializing DB

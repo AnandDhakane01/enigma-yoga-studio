@@ -23,7 +23,7 @@ const AdmissionForm = () => {
 
     // api call
     try {
-      let res = await fetch("http://localhost:5000/register", {
+      let res = await fetch(`${process.env.REACT_APP_BACKEND}/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -39,12 +39,8 @@ const AdmissionForm = () => {
       });
 
       let resJson = await res.json();
-
       setRegistration(true);
-
       setMessage(resJson.message);
-
-      console.log(resJson);
     } catch (e) {
       console.error("error in API call");
     }
@@ -237,7 +233,7 @@ const AdmissionForm = () => {
               </form>
             </div>
           ) : (
-            <p classname="w-full max-w-md space-y-8">{message}</p>
+            <p>{message}</p>
           )}
         </div>
         <div className="lg:w-6/12 flex items-center justify-center">
