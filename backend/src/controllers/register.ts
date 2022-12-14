@@ -3,6 +3,7 @@ import AppDataSource from "../index";
 import { Users } from "../entities/user.entity";
 import { Registration_info } from "../entities/registration_info.entity";
 import { Batches } from "../entities/batch.entity";
+import { Any } from "typeorm";
 
 const register = async (req: Request, res: Response) => {
   const { firstName, lastName, age, email, batch, month, amount, year } =
@@ -25,7 +26,7 @@ const register = async (req: Request, res: Response) => {
 
     const user_id = saved_item.raw[0].id;
 
-    const batch_id = await AppDataSource.getRepository(Batches)
+    const batch_id: any = await AppDataSource.getRepository(Batches)
       .createQueryBuilder("batch")
       .where("batch.batch = :batch", { batch: batch })
       .select("batch.id")
