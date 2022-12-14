@@ -7,6 +7,7 @@ import registerInitialChecks from "./middlewares/validation";
 import register from "./controllers/register";
 import { DataSource } from "typeorm";
 
+
 // app
 const app: Express = express();
 dotenv.config();
