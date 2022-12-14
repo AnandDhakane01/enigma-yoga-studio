@@ -15,9 +15,8 @@ const port = 5000;
 // middlewares
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-const allowedOrigins = ["*"];
 const options: cors.CorsOptions = {
-  origin: allowedOrigins,
+  origin: "*",
 };
 app.use(cors(options));
 app.use(express.json());

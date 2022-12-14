@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import AppDataSource from "../index";
 import { Batches } from "../entities/batch.entity";
-import { debug } from "winston";
 
 const registerInitialChecks = async (
   req: Request,
@@ -70,6 +69,7 @@ const registerInitialChecks = async (
   } catch (e) {
     return res.status(406).json({ error: true, message: e.message });
   }
+
   next();
 };
 

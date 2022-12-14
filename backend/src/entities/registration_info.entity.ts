@@ -18,7 +18,4 @@ export class Registration_info {
 
   @Column()
   year: number;
-
-  @Column()
-  amount_paid: boolean;
 }
