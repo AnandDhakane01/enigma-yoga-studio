@@ -5,6 +5,7 @@ import cors from "cors";
 import config from "./db";
 import registerInitialChecks from "./middlewares/validation";
 import register from "./controllers/register";
+import completePayment from "./middlewares/complete_payment";
 import { DataSource } from "typeorm";
 
 // app
@@ -21,12 +22,13 @@ const options: cors.CorsOptions = {
 app.use(cors(options));
 app.use(express.json());
 
-// register route
-app.get("/", (req, res) => {
+// home route
+app.get("/", (req: Request, res: Response) => {
   return res.status(200).send("Enigma Yoga Studio");
 });
 
-app.post("/register", registerInitialChecks, register);
+// register route
+app.post("/register", registerInitialChecks, completePayment, register);
 
 // initializing DB
 const AppDataSource = new DataSource(config);
